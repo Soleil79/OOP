@@ -18,4 +18,6 @@ public class Employee {
         this.phone = phone;
         this.residence = residence;
     }
+
+ 
 }
