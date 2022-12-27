@@ -18,6 +18,14 @@ public class Employee {
         this.phone = phone;
         this.residence = residence;
     }
+   
+    public Employee(String name, int position, int birthdate, int salary, int phone, int residence) {
+        this(0, name, position, birthdate, salary, phone, residence);
 
+    }
+    
+    public void setId (int id){
+        this.id = id;
+    }
  
 }
