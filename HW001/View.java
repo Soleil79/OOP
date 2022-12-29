@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class View {
+   
+
     private StaffController staffController;
     
     public StaffController getStaffController() {
@@ -22,8 +24,9 @@ public class View {
         int choice = in.nextInt();
         switch (choice){
             case (1):
-                List<Employee> employees = staffController.EmplList();
-                printAll(employees);               
+                // List<Employee> employees = staffController.EmplList();
+                // printAll(employees);       
+                staffController.printEmployers();
                 break;
             case (2):
                 Scanner name = new Scanner(System.in, "Cp866"); 

@@ -10,6 +10,7 @@ public class StaffController {
 
     private Db db;    
     private WriteFile writeF;
+    ReadFile ReadFile = new ReadFile();
 
     public Db getDb() {
         return db;
@@ -98,6 +99,13 @@ public class StaffController {
         }
         return null;
     }
+
+    public void printEmployers (){
+        List<String> employees = ReadFile.readAllLines();
+        List<Employee> listEmployees = ReadFile.readList(employees);
+        ReadFile.PrintEmplList(listEmployees);
+    }
+   
 
 
 }

@@ -2,6 +2,7 @@ package HW001;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Db {
 
@@ -9,8 +10,17 @@ public class Db {
     ArrayList<Position> positions = new ArrayList<>();
     ArrayList<Residence> residences = new ArrayList<>(); 
 
+    
+
     public Db (){
-        
+        ReadFile ReadFile = new ReadFile();
+        List<String> list = ReadFile.readAllLines();
+        employees = ReadFile.readList(list);
+        // List<Employee> listEmployees = ReadFile.readList(employees);
+        // ReadFile.PrintEmplList(listEmployees);
+        // Employee newempl = new Employee(7, "Разумейко Петр Иванович", 4, 1980, 100, 152, 1);
+        // db.employees.add(newempl);
+
         residences.add(new Residence(1, "Москва"));
         residences.add(new Residence(2, "Санкт-Петербург"));
         residences.add(new Residence(3, "Екатеринбург"));
