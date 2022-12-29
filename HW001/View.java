@@ -2,6 +2,7 @@ package HW001;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -21,7 +22,8 @@ public class View {
         int choice = in.nextInt();
         switch (choice){
             case (1):
-                staffController.printall();
+                List<Employee> employees = staffController.EmplList();
+                printAll(employees);               
                 break;
             case (2):
                 Scanner name = new Scanner(System.in, "Cp866"); 
@@ -51,18 +53,23 @@ public class View {
                 break;
             case(5):
             Scanner delEmpl = new Scanner(System.in, "Cp866");
-            staffController.printall();
+            System.out.println(staffController.EmplList());
             System.out.println("\nВведите id сотрудника, которого вы хотите удалить: ");
             int delEmployee = in.nextInt();
             staffController.deleteEmployee(delEmployee);
                             
-            staffController.printall();
+            System.out.println(staffController.EmplList());
                
             delEmpl.close();
             break;
 
         }
         in.close();
+    }
+    private void printAll(List<Employee> employees) {
+        for (Employee employee: employees){
+            System.out.println(staffController.getInfo(employee));
+        }
     }
 
 

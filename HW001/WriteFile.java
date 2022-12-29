@@ -18,7 +18,7 @@ public class WriteFile {
         File file = new File("staff.txt");
         try (PrintWriter pw = new PrintWriter(file)) {
             for (Employee employee : db.employees){
-                pw.println(employee.id);
+                pw.println(db.getAllInfo(employee));
             }
         }
         

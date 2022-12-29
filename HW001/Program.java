@@ -9,12 +9,21 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException {
-        Infrastructure infrastructure = new Infrastructure();
+        Db db = new Db();
+        WriteFile writeFile = new WriteFile(db);
+        StaffController staffController = new StaffController(db, writeFile);
+        View view = new View(staffController);
+        
+       
+        
+
+
+        // Infrastructure infrastructure = new Infrastructure();
         // Scanner in = new Scanner(System.in, "Cp866"); 
         // System.out.println("\nДля работы с базой данных введите символ или введите end:");
         // String todo = in.nextLine();
         // while (todo != "end"){
-            View.choices();
+            view.choices();
         // }
         
         // in.close();

@@ -19,6 +19,7 @@ public class Employee {
         this.salary = salary;
         this.phone = phone;
         this.residence = residence;
+        // getAllInfo(null);
     }
    
     public Employee(String name, int position, int birthdate, int salary, int phone, int residence) {
@@ -30,18 +31,5 @@ public class Employee {
         this.id = id;
     }
 
-    public String getAllInfo(Employee em) {
-
-        return String.format(
-                "id:%d, ФИО: %s, Должность: %s, год рождения: %s, зарплата тыс.руб: %s, телефон: %s, место проживания: %s",
-                em.id,
-                em.name,
-                db.positions.get(em.position - 1).post,
-                em.birthdate,
-                em.salary,
-                em.phone,
-                db.residences.get(em.residence - 1).city);
-
-    }
  
 }

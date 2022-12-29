@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StaffController {
-    private Db db;
+    Employee newem = new Employee(0, null, 0, 0, 0, 0, 0);
+
+    private Db db;    
     private WriteFile writeF;
 
     public Db getDb() {
@@ -18,18 +20,19 @@ public class StaffController {
         this.writeF = writeF;
     }
 
+    
+    public String getInfo(Employee em) {      
+        return db.getAllInfo(em);
+    }
+
     // public void printall() {
     //     for (Employee employee : db.employees) {
     //         System.out.println(getAllInfo(employee));
     //     }
     // }
 
-    public List<Employee> printall() {
-        List<Employee> list = new ArrayList<>();
-        for (Employee employee : db.employees) {
-            list.add(employee);
-        }
-        return list;
+    public List<Employee> EmplList() {      
+        return db.employees;
     }
 
 
@@ -54,7 +57,7 @@ public class StaffController {
         for (Employee employee : db.employees) {
             if (employee.name.toLowerCase().indexOf(word.toLowerCase()) != -1) {
                 employees.add(employee);
-                System.out.println(Employee.getAllInfo(employee));
+                System.out.println(employee);
                 count++;
             }
         }
@@ -95,6 +98,8 @@ public class StaffController {
         }
         return null;
     }
+
+
 }
 
 // alt shift f - автоформат
