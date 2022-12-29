@@ -14,7 +14,7 @@ public class Program {
         // System.out.println("\nДля работы с базой данных введите символ или введите end:");
         // String todo = in.nextLine();
         // while (todo != "end"){
-            infrastructure.choices();
+            View.choices();
         // }
         
         // in.close();
@@ -31,12 +31,12 @@ public class Program {
         // String findName = in.nextLine();
         // in.close();
         // infrastructure.findAll(findName);
-        try {
-            infrastructure.writeF();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // try {
+        //     WriteFile.writeF();
+        // } catch (FileNotFoundException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
 
     }
 }

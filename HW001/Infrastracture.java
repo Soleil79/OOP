@@ -1,12 +1,6 @@
 package HW001;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 
 class Infrastructure {
 
@@ -60,39 +54,5 @@ class Infrastructure {
     }
     
 
-   
-    public void writeF() throws FileNotFoundException, UnsupportedEncodingException {
-        File file = new File("staff.txt");
-        try (PrintWriter pw = new PrintWriter(file)) {
-            for (Employee employee : db.employees){
-                pw.println(getAllInfo(employee.id));
-            }
-        }                                                                                                  
-        
-    }
-   
-    // public void readF() throws FileNotFoundException, UnsupportedEncodingException {
-    //     File file = new File("staff.txt");
-    //     try (FileReader fr = new FileReader(file)) {
-    //         Scanner scan = new Scanner(fr);
-    //         while (scan.hasNext()){
-    //             db.employees.add(scan.next());
-    //         }
-    //         scan.close();
-    //     }
-        
-    // }
-
-
-    
-
-
-
-    public void printall(){
-        for (Employee employee: db.employees){                
-            System.out.println(getAllInfo(employee.id));
-        }
-    }
-  
 
 }

@@ -18,25 +18,35 @@ public class StaffController {
         this.writeF = writeF;
     }
 
-    public void printall() {
+    // public void printall() {
+    //     for (Employee employee : db.employees) {
+    //         System.out.println(getAllInfo(employee));
+    //     }
+    // }
+
+    public List<Employee> printall() {
+        List<Employee> list = new ArrayList<>();
         for (Employee employee : db.employees) {
-            System.out.println(getAllInfo(employee));
+            list.add(employee);
         }
+        return list;
     }
 
-    public String getAllInfo(Employee em) {
 
-        return String.format(
-                "id:%d, ФИО: %s, Должность: %s, год рождения: %s, зарплата тыс.руб: %s, телефон: %s, место проживания: %s",
-                em.id,
-                em.name,
-                db.positions.get(em.position - 1).post,
-                em.birthdate,
-                em.salary,
-                em.phone,
-                db.residences.get(em.residence - 1).city);
 
-    }
+    // public String getAllInfo(Employee em) {
+
+    //     return String.format(
+    //             "id:%d, ФИО: %s, Должность: %s, год рождения: %s, зарплата тыс.руб: %s, телефон: %s, место проживания: %s",
+    //             em.id,
+    //             em.name,
+    //             db.positions.get(em.position - 1).post,
+    //             em.birthdate,
+    //             em.salary,
+    //             em.phone,
+    //             db.residences.get(em.residence - 1).city);
+
+    // }
 
     public void findAll(String word) {
         List<Employee> employees = new ArrayList<>();
@@ -44,7 +54,7 @@ public class StaffController {
         for (Employee employee : db.employees) {
             if (employee.name.toLowerCase().indexOf(word.toLowerCase()) != -1) {
                 employees.add(employee);
-                System.out.println(getAllInfo(employee));
+                System.out.println(Employee.getAllInfo(employee));
                 count++;
             }
         }

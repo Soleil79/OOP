@@ -1,5 +1,7 @@
 package HW001;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 public class View {
@@ -12,7 +14,7 @@ public class View {
         this.staffController = staffController;
     }
 
-    public void  choices() {
+    public void  choices() throws FileNotFoundException, UnsupportedEncodingException {
         Scanner in = new Scanner(System.in, "Cp866"); 
         System.out.println("\nВыберите действие:\n1 - Показать все записи;\n2 - Найти сотрудника по ФИО;\n3 - Добавить нового сотрудника; \n4 - Изменить запись; \n5 - Удалить запись;");
         System.out.println("\nВведите число:");
