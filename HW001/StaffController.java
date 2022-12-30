@@ -26,10 +26,6 @@ public class StaffController {
         return db.getAllInfo(em);
     }
 
-    public List<Employee> EmplList() {      
-        return db.employees;
-    }
-
     public void findAll(String word) {
         List<Employee> employees = new ArrayList<>();
         int count = 0;
