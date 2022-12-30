@@ -8,4 +8,6 @@ public class Position {
         this.id = id;
         this.post = post;
     }
+    
 }
+

@@ -2,7 +2,6 @@ package HW001;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -23,9 +22,7 @@ public class View {
         System.out.println("\nВведите число:");
         int choice = in.nextInt();
         switch (choice){
-            case (1):
-                // List<Employee> employees = staffController.EmplList();
-                // printAll(employees);       
+            case (1):                 
                 staffController.printEmployers();
                 break;
             case (2):
@@ -40,6 +37,7 @@ public class View {
                 System.out.println("\nВведите Фамилию, Имя и Отчество сотрудника: ");
                 String newname = newEmp.nextLine();
                 System.out.println("\nВыберите должность из списка: \n1 - директор;\n2 - бухгалтер;\n3 - стилист;\n4 - парикмахер; \n5 - ресепшионист \n");               
+                System.out.println("\nВведите число:");
                 int newposition = newEmp.nextInt();                
                 System.out.println("\nВведите год рождения **** ");
                 int newdate = newEmp.nextInt();
@@ -69,11 +67,5 @@ public class View {
         }
         in.close();
     }
-    private void printAll(List<Employee> employees) {
-        for (Employee employee: employees){
-            System.out.println(staffController.getInfo(employee));
-        }
-    }
-
-
+    
 }

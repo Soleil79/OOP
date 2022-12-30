@@ -1,8 +1,7 @@
 package HW001;
 
 public class Employee {
-    private Db db;
-    
+       
     int id;
     String name;
     int position;
@@ -19,14 +18,14 @@ public class Employee {
         this.salary = salary;
         this.phone = phone;
         this.residence = residence;
-        // getAllInfo(null);
+        
     }
    
     public Employee(String name, int position, int birthdate, int salary, int phone, int residence) {
         this(0, name, position, birthdate, salary, phone, residence);
 
     }
-    
+ 
     public void setId (int id){
         this.id = id;
     }

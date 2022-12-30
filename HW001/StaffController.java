@@ -26,31 +26,9 @@ public class StaffController {
         return db.getAllInfo(em);
     }
 
-    // public void printall() {
-    //     for (Employee employee : db.employees) {
-    //         System.out.println(getAllInfo(employee));
-    //     }
-    // }
-
     public List<Employee> EmplList() {      
         return db.employees;
     }
-
-
-
-    // public String getAllInfo(Employee em) {
-
-    //     return String.format(
-    //             "id:%d, ФИО: %s, Должность: %s, год рождения: %s, зарплата тыс.руб: %s, телефон: %s, место проживания: %s",
-    //             em.id,
-    //             em.name,
-    //             db.positions.get(em.position - 1).post,
-    //             em.birthdate,
-    //             em.salary,
-    //             em.phone,
-    //             db.residences.get(em.residence - 1).city);
-
-    // }
 
     public void findAll(String word) {
         List<Employee> employees = new ArrayList<>();
@@ -58,7 +36,7 @@ public class StaffController {
         for (Employee employee : db.employees) {
             if (employee.name.toLowerCase().indexOf(word.toLowerCase()) != -1) {
                 employees.add(employee);
-                System.out.println(employee);
+                System.out.println(getInfo(employee));
                 count++;
             }
         }
@@ -91,7 +69,6 @@ public class StaffController {
     }
 
     private Employee findEmployee(int id) {
-
         for (Employee employee : db.employees) {
             if (employee.id == id) {
                 return employee;
@@ -100,12 +77,12 @@ public class StaffController {
         return null;
     }
 
-    public void printEmployers (){
-        List<String> employees = ReadFile.readAllLines();
-        List<Employee> listEmployees = ReadFile.readList(employees);
-        ReadFile.PrintEmplList(listEmployees);
+    public void printEmployers (){            
+            for (Employee line: db.employees){
+            System.out.println(getInfo(line));
+        }    
+
     }
-   
 
 
 }
