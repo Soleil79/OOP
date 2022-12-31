@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class View {
 
-    private StaffController staffController;
+    private StaffController staffController;    
+    ChangeData changeData = new ChangeData();
 
     public StaffController getStaffController() {
         return staffController;
@@ -49,13 +50,60 @@ public class View {
                 int newphone = newEmp.nextInt();
                 System.out.println(
                         "\nВведите город проживания из списка: \n1 - Москва;\n2 - Санкт-Петербург;\n3 - Екатеринбург;\n4 - Саратов\n");
+                System.out.println("\nВведите число:");
                 int newresidence = newEmp.nextInt();
                 Employee newem = new Employee(newname, newposition, newdate, newsalary, newphone, newresidence);
                 staffController.addEmployee(newem);
                 newEmp.close();
                 break;
             case(4):
-                
+                Scanner change = new Scanner(System.in, "Cp866");
+                staffController.printEmployers();
+                System.out.println("\nВведите ID сотрудника, чьи данные вы хотите изменить:");                                
+                int changeID = change.nextInt();
+                System.out.println(
+                        "\nЧто вы хотите поменять: \n1 - ФИО;\n2 - должность;\n3 - год рождения;\n4 - зарплату;\n5 - телефон;\n6 - город проживания\n");
+                System.out.println("\nВведите число:");
+                int changeParam = change.nextInt();
+
+                if (changeParam == 1){
+                    Scanner changename = new Scanner(System.in, "Cp866");
+                    System.out.println("\nВведите новые Фамилию Имя и Отчество:");
+                    String changeName = changename.nextLine();
+                    staffController.nameChange(changeID, changeName);
+                    changename.close();
+                }
+                if (changeParam == 2){
+                    System.out.println(
+                        "\nВыберите должность из списка: \n1 - директор;\n2 - бухгалтер;\n3 - стилист;\n4 - парикмахер; \n5 - ресепшионист \n");
+                    System.out.println("\nВведите число:");
+                    int changePost = change.nextInt();
+                    staffController.positionChange(changeID, changePost);
+                }
+                if (changeParam == 3){
+                    System.out.println("\nВведите новый год рождения:");
+                    int changeDate = change.nextInt();
+                    staffController.dateChange(changeID, changeDate);
+                }
+                if (changeParam == 4){
+                    System.out.println("\nВведите новую зарплату (тыс.руб):");
+                    int changeSalary = change.nextInt();
+                    staffController.salaryChange(changeID, changeSalary);
+                }
+                if (changeParam == 5){
+                    System.out.println("\nВведите новый телефон:");
+                    int changePhone = change.nextInt();
+                    staffController.phoneChange(changeID, changePhone);
+                }
+                if (changeParam == 6){                    
+                    System.out.println(
+                        "\nВыберите город проживания из списка: \n1 - Москва;\n2 - Санкт-Петербург;\n3 - Екатеринбург;\n4 - Саратов\n");
+                    System.out.println("\nВведите число:");
+                    int changeResidence = change.nextInt();
+                    staffController.residenceChange(changeID, changeResidence);
+                }
+                change.close();
+                break;
             
             case (5):
                 Scanner delEmpl = new Scanner(System.in, "Cp866");
