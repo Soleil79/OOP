@@ -1,23 +1,23 @@
 package HW001;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class View {
 
     private StaffController staffController;    
-    ChangeData changeData = new ChangeData();
-
+    
     public StaffController getStaffController() {
         return staffController;
     }
 
     public View(StaffController staffController) {
         this.staffController = staffController;
+        
     }
+   
 
-    public void choices() throws FileNotFoundException, UnsupportedEncodingException {
+    public void choices() throws IOException {
         Scanner in = new Scanner(System.in, "Cp866");
         System.out.println(
                 "\nВыберите действие:\n1 - Показать все записи;\n2 - Найти сотрудника по ФИО;\n3 - Добавить нового сотрудника; \n4 - Изменить запись; \n5 - Удалить запись;");
@@ -70,37 +70,39 @@ public class View {
                     Scanner changename = new Scanner(System.in, "Cp866");
                     System.out.println("\nВведите новые Фамилию Имя и Отчество:");
                     String changeName = changename.nextLine();
-                    staffController.nameChange(changeID, changeName);
+                    staffController.stringChange(changeParam, changeID, changeName);
                     changename.close();
                 }
                 if (changeParam == 2){
+                    Scanner changepost = new Scanner(System.in, "Cp866");
                     System.out.println(
                         "\nВыберите должность из списка: \n1 - директор;\n2 - бухгалтер;\n3 - стилист;\n4 - парикмахер; \n5 - ресепшионист \n");
                     System.out.println("\nВведите число:");
                     int changePost = change.nextInt();
-                    staffController.positionChange(changeID, changePost);
+                    staffController.dataChange(changeParam, changeID, changePost);
+                    changepost.close();
                 }
                 if (changeParam == 3){
                     System.out.println("\nВведите новый год рождения:");
                     int changeDate = change.nextInt();
-                    staffController.dateChange(changeID, changeDate);
+                    staffController.dataChange(changeParam, changeID, changeDate);
                 }
                 if (changeParam == 4){
                     System.out.println("\nВведите новую зарплату (тыс.руб):");
                     int changeSalary = change.nextInt();
-                    staffController.salaryChange(changeID, changeSalary);
+                    staffController.dataChange(changeParam, changeID, changeSalary);
                 }
                 if (changeParam == 5){
                     System.out.println("\nВведите новый телефон:");
                     int changePhone = change.nextInt();
-                    staffController.phoneChange(changeID, changePhone);
+                    staffController.dataChange(changeParam, changeID, changePhone);
                 }
                 if (changeParam == 6){                    
                     System.out.println(
                         "\nВыберите город проживания из списка: \n1 - Москва;\n2 - Санкт-Петербург;\n3 - Екатеринбург;\n4 - Саратов\n");
                     System.out.println("\nВведите число:");
                     int changeResidence = change.nextInt();
-                    staffController.residenceChange(changeID, changeResidence);
+                    staffController.dataChange(changeParam, changeID, changeResidence);
                 }
                 change.close();
                 break;

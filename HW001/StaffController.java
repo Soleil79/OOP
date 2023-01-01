@@ -1,29 +1,29 @@
 package HW001;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-// import java.util.ArrayList;
-// import java.util.List;
 
 
 public class StaffController {
     Employee newem = new Employee(0, null, 0, 0, 0, 0, 0);
 
-    private Db db;    
+    private Db db;
     private WriteFile writeF;
     ReadFile ReadFile = new ReadFile();
+    ChangeData changeData = new ChangeData(db, writeF);
 
     public Db getDb() {
         return db;
     }
 
-    public StaffController(Db db, WriteFile writeF) {
+    public StaffController(Db db, WriteFile writeF, ChangeData changeData) {
         this.db = db;
         this.writeF = writeF;
+        this.changeData = changeData;
     }
 
-    
-    public String getInfo(Employee em) {      
+    public String getInfo(Employee em) {
         return db.getAllInfo(em);
     }
 
@@ -65,7 +65,7 @@ public class StaffController {
         writeF.writeF();
     }
 
-    //Обнуление сотрудника перед удалением
+    // Обнуление сотрудника перед удалением
     public Employee ResetEmployee(int id) {
         for (Employee employee : db.employees) {
             if (employee.id == id) {
@@ -75,67 +75,37 @@ public class StaffController {
         return null;
     }
 
-    public void printEmployers (){            
-        for (Employee line: db.employees){
+    public void printEmployers() {
+        for (Employee line : db.employees) {
             System.out.println(getInfo(line));
-        }    
-
-    }   
-
-// Методы замены параметров сотрудников
-    public void nameChange(int id, String newName) throws FileNotFoundException, UnsupportedEncodingException{           
-        for (Employee em: db.employees){
-            if (em.id == id){
-                em.name = newName;                           
-            }      
-        writeF.writeF();       
         }
+
     }
 
-    public void positionChange(int id, int newPosition) throws FileNotFoundException, UnsupportedEncodingException{
-        for (Employee em: db.employees){
-            if (em.id == id){
-                em.position = newPosition;               
-            }  
-       
-        writeF.writeF();       
+    public void dataChange(int choice, int id, int data) throws FileNotFoundException, UnsupportedEncodingException {
+
+        if (choice == 2) {
+            changeData.positionChange(id, data);
         }
-    }
-
-    public void dateChange(int id, int newDate) throws FileNotFoundException, UnsupportedEncodingException{
-        for (Employee employee: db.employees){
-            if (employee.id == id){
-                employee.birthdate = newDate;               
-            }      
-        writeF.writeF();       
+        if (choice == 3) {
+            changeData.dateChange(id, data);
         }
-    }
-
-    public void salaryChange(int id, int newSalary) throws FileNotFoundException, UnsupportedEncodingException{
-        for (Employee employee: db.employees){
-            if (employee.id == id){
-                employee.salary = newSalary;               
-            }      
-        writeF.writeF();       
+        if (choice == 4) {
+            changeData.salaryChange(id, data);
         }
+        if (choice == 5) {
+            changeData.phoneChange(id, data);
+        }
+        if (choice == 6) {
+            changeData.residenceChange(id, data);
+        }
+
     }
 
-    public void phoneChange(int id, int newPhone) throws FileNotFoundException, UnsupportedEncodingException{
-        for (Employee employee: db.employees){
-            if (employee.id == id){
-                employee.phone = newPhone;               
-            }      
-        writeF.writeF();       
-        }      
-    }
-
-    public void residenceChange(int id, int newResidence) throws FileNotFoundException, UnsupportedEncodingException{
-        for (Employee employee: db.employees){
-            if (employee.id == id){
-                employee.residence = newResidence;               
-            }      
-        writeF.writeF();       
-        }     
+    public void stringChange(int choice, int id, String data) throws IOException {
+        if (choice == 1) {
+            changeData.nameChange(id, data);
+        }
     }
 
 }
