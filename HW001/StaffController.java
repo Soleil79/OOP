@@ -3,6 +3,8 @@ package HW001;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class StaffController {
@@ -27,19 +29,14 @@ public class StaffController {
         return db.getAllInfo(em);
     }
 
-    public void findAll(String word) {
-        // List<Employee> employees = new ArrayList<>();
-        int count = 0;
+    public List<Employee> findAll(String word) {
+        List<Employee> foundEmployees = new ArrayList<>();
         for (Employee employee : db.employees) {
             if (employee.name.toLowerCase().indexOf(word.toLowerCase()) != -1) {
-                // employees.add(employee);
-                System.out.println(getInfo(employee));
-                count++;
+                foundEmployees.add(employee);                
             }
         }
-        if (count < 1) {
-            System.out.println("Совпадения не найдены"); // to do exceptions
-        }
+        return foundEmployees;
     }
 
     public int lastIndex() {
@@ -75,12 +72,6 @@ public class StaffController {
         return null;
     }
 
-    public void printEmployers() {
-        for (Employee line : db.employees) {
-            System.out.println(getInfo(line));
-        }
-
-    }
 
     public void dataChange(int choice, int id, int data) throws FileNotFoundException, UnsupportedEncodingException {
 
@@ -106,6 +97,10 @@ public class StaffController {
         if (choice == 1) {
             changeData.nameChange(id, data);
         }
+    }
+
+    public List<Employee> getAllEmployees() {
+        return db.employees;
     }
 
 }

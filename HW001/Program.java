@@ -16,6 +16,8 @@ public class Program {
         db.employees = ReadFile.readList(list);
 
         view.choices();
-
+        
+        view.intScanClose();
+        view.strScanClose();
     }
 }
