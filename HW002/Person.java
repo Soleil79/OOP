@@ -88,10 +88,6 @@ public class Person {
             sb.append(father.toStringParents());
             sb.append("\n");
         }
-        // sb.append("Имя: ");    
-        // sb.append(name);
-        // sb.append(" Год рождения: ");  
-        // sb.append(birthdate);
         return sb.toString();
     }
 
@@ -113,10 +109,6 @@ public class Person {
             sb.append(father.toString());
             sb.append("\n");
         }
-        // sb.append("Имя: ");    
-        // sb.append(name);
-        // sb.append(" Год рождения: ");  
-        // sb.append(birthdate);
         return sb.toString();
     }
  
