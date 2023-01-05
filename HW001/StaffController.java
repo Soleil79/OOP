@@ -8,11 +8,8 @@ import java.util.List;
 
 
 public class StaffController {
-    Employee newem = new Employee(0, null, 0, 0, 0, 0, 0);
-
     private Db db;
     private WriteFile writeF;
-    ReadFile ReadFile = new ReadFile();
     ChangeData changeData = new ChangeData(db, writeF);
 
     public Db getDb() {

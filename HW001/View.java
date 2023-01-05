@@ -113,7 +113,7 @@ public class View {
                     System.out.println("\nВведите id сотрудника, которого вы хотите удалить: ");
                     int delEmployee = inputInt();
                     staffController.deleteEmployee(delEmployee);
-                    System.out.printf("\nСотрудник с ID:%d успешно удален из базы данных", delEmployee);    
+                    System.out.printf("\nСотрудник с ID:%d успешно удален из базы данных\n", delEmployee);    
                     printEmployers(staffController.getAllEmployees());                   
                     break;
 
