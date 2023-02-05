@@ -86,7 +86,7 @@ public class Person: Db {
 
     
 
-    public String toString(){
+    public override String ToString(){
         StringBuilder sb = new StringBuilder();
         sb.Append("Имя: ");    
         sb.Append(name);
@@ -117,15 +117,15 @@ public class Person: Db {
 
         if (mother != null){
             sb.Append("Бабушка: ");
-            sb.Append(mother.toString());
+            sb.Append(mother.ToString());
             // sb.Append("\n");
         }
         if (father != null){
             sb.Append("Дедушка: ");
-            sb.Append(father.toString());
+            sb.Append(father.ToString());
             sb.Append("\n");
         }
         return sb.ToString();
     }
- 
+
 }

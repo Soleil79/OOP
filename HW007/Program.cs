@@ -1,7 +1,4 @@
-﻿using System;
-
-
-public class Program {
+﻿public class Program {
     static void Main() {
           Person grandma1 = new Person(1, "Иванова Анна Павловна", 2, 1910, 1);
         Person grandpa1 = new Person(2, "Иванов Иван Иванович", 1, 1908, 1);
