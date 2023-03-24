@@ -21,9 +21,9 @@ public class View {
        
         System.out.println("Программа для работы с базой данных игрушек");
         int choice = 0;
-        while (choice != 8) {
+        while (choice != 9) {
             System.out.println(
-                    "\nВыберите действие:\n1 - Показать все записи;\n2 - Найти игрушку по названию;\n3 - Добавить новую игрушку; \n4 - Изменить запись; \n5 - Удалить запись; \n6 - Розыгрыш; \n7 - Получить приз; \n8 - Выход");
+                    "\nВыберите действие:\n1 - Показать все игрушки в наличии;\n2 - Найти игрушку по названию;\n3 - Добавить новую игрушку; \n4 - Изменить запись; \n5 - Удалить запись; \n6 - Розыгрыш; \n7 - Показать список призов; \n8 - Получить приз; \n9 - Выход");
             System.out.println("\nВведите число:");
             choice = inputInt();
             
@@ -102,6 +102,17 @@ public class View {
                     staffController.lottery(winToy);                 
                     break;  
 
+                case (7): 
+                    System.out.println("Список выигранных призов: ");   
+                    printWinToys(staffController.ReadPrize());                                             
+                    break; 
+                
+                case (8):                   
+                    printWinToys(staffController.ReadPrize());
+                    System.out.println("\nВведите id игрушки, которую вы хотите получить: ");
+                    int getToy = inputInt();
+                    staffController.getPrize(getToy);                 
+                    break; 
             }
 
         }
@@ -122,6 +133,14 @@ public class View {
         
         for (Toy line : toys) {
             System.out.println(staffController.getInfo(line));
+        }
+    }
+
+    
+    public void printWinToys(List <Toy> toys) {
+        
+        for (Toy line : toys) {
+            System.out.println(staffController.getMinInfo(line));
         }
     }
 

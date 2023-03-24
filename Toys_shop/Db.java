@@ -1,10 +1,7 @@
 package Toys_shop;
 
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 
 public class Db {
@@ -34,15 +31,14 @@ public class Db {
 
         }
     
-        public String getMinInfo(Toy toy) {
+    public String getMinInfo(Toy toy) {
 
-            return String.format(
-                "id:%d, Наименование: %s, Дата: %tA",
-                toy.id,
-                toy.name,
-                toy.date = new Date());
-    
-            }
+        return String.format(
+            "id:%d, Наименование: %s",
+            toy.id,
+            toy.name);
+
+        }
 
         
     }

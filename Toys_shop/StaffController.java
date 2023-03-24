@@ -1,13 +1,10 @@
 package Toys_shop;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class StaffController {
     private Db db;
@@ -28,11 +25,15 @@ public class StaffController {
         return db.getAllInfo(toy);
     }
 
+    public String getMinInfo(Toy toy) {
+        return db.getMinInfo(toy);
+    }
+
     public List<Toy> findAll(String word) {
         List<Toy> foundToys = new ArrayList<>();
-        for ( Toy toy : db.toys) {
+        for (Toy toy : db.toys) {
             if (toy.name.toLowerCase().indexOf(word.toLowerCase()) != -1) {
-                foundToys.add(toy);                
+                foundToys.add(toy);
             }
         }
         return foundToys;
@@ -63,7 +64,7 @@ public class StaffController {
 
     // Обнуление игрушки перед удалением
     public Toy ResetToy(int id) {
-        for (Toy toy: db.toys) {
+        for (Toy toy : db.toys) {
             if (toy.id == id) {
                 return toy;
             }
@@ -71,6 +72,14 @@ public class StaffController {
         return null;
     }
 
+    public Toy ResetWinToy(int id) {
+        for (Toy toy : db.winToys) {
+            if (toy.id == id) {
+                return toy;
+            }
+        }
+        return null;
+    }
 
     public void dataChange(int choice, int id, int data) throws FileNotFoundException, UnsupportedEncodingException {
 
@@ -80,9 +89,8 @@ public class StaffController {
         if (choice == 3) {
             changeData.dropRateChange(id, data);
         }
-        
-    }
 
+    }
 
     public void stringChange(int choice, int id, String data) throws IOException {
         if (choice == 1) {
@@ -94,32 +102,43 @@ public class StaffController {
         return db.toys;
     }
 
+    public List<Toy> ReadPrize() {
+        return db.winToys;
+    }
+
+        
+    
 
 
-	public List<Toy> lottery(int choiceId) throws FileNotFoundException, UnsupportedEncodingException{
-        List<Toy> winToys = new ArrayList<>();
-        for ( Toy toy : db.toys) {
+    public void lottery(int choiceId) throws FileNotFoundException, UnsupportedEncodingException {
+        for (Toy toy : db.toys) {
             if (toy.id == choiceId) {
-                int randInt = (int) (Math.random()*(100+1));
-                if ((int) toy.droprate >= randInt){
-                    db.winToys.add(toy); 
+                int randInt = (int) (Math.random() * (100 + 1));
+                if ((int) toy.droprate >= randInt) {
+                    db.winToys.add(toy);
                     System.out.printf("Поздравляем, Вы выиграли приз: %s", toy.name);
-                    File file = new File("toys_won.txt");
-                    try (PrintWriter pw2 = new PrintWriter(file)) {
-                        pw2.println(db.getMinInfo(toy));      
-                    }                  
-                }
-                else {
+                    writeF.writeFLottery();
+                } else {
                     System.out.println("К сожалению Вам не удалось выиграть приз в этот раз");
                 }
             }
-                               
-        }        
-        return winToys; // Список выигранных игрушек
-		
-		
-		
-	}
+        }
+
+    }
+
+    public void getPrize(int winId) throws FileNotFoundException, UnsupportedEncodingException {
+        Toy foundToy = ResetWinToy(winId);
+        db.winToys.remove(foundToy);
+        writeF.writeFLottery();
+        System.out.println("Поздравляем, вы можете забрать свой приз!");
+        for (Toy toy : db.toys) {
+            if (toy.id == winId) {
+                toy.quantity -= 1;
+                writeF.writeF();
+            }
+        }
+
+    }
 
 }
 

@@ -25,9 +25,9 @@ public class WriteFile {
     }
     public void writeFLottery() throws FileNotFoundException, UnsupportedEncodingException {
         File file = new File("toys_won.txt");
-        try (PrintWriter pw = new PrintWriter(file)) {
-            for (Toy toy : db.toys){
-                pw.println(db.getAllInfo(toy));
+        try (PrintWriter pw2 = new PrintWriter(file)) {
+            for (Toy wintoy : db.winToys){
+                pw2.println(db.getMinInfo(wintoy));
             }
         }
         

@@ -10,10 +10,10 @@ import java.util.List;
 public class ReadFile {
     Db db = new Db();
 
-    public List<String> readAllLines() throws IOException {
+    public List<String> readAllLines(String path) throws IOException {
         List<String> lines = new ArrayList<>();
         // try {
-        File file = new File("toys.txt");
+        File file = new File(path);
         // создаем объект FileReader для объекта File
         FileReader fr = new FileReader(file);
         // создаем BufferedReader с существующего FileReader для построчного считывания
@@ -51,6 +51,21 @@ public class ReadFile {
 
     }
 
+    
+    public Toy mapwin(String line) {
+
+        String[] lines = line.split(", |: |:");
+
+        int id = Integer.parseInt(lines[1]);
+        String name = lines[3];
+       
+        
+        Toy newToy = new Toy(id, name);
+
+        return newToy;
+
+    }
+
     public ArrayList<Toy> readList(List<String> list) {
         ArrayList<Toy> toys = new ArrayList<>();
         for (String line : list) {
@@ -60,6 +75,18 @@ public class ReadFile {
 
         return toys;
     }
+
+    public ArrayList<Toy> readWinList(List<String> list) {
+        ArrayList<Toy> wintoys = new ArrayList<>();
+        for (String line : list) {
+            Toy toy = mapwin(line);
+            wintoys.add(toy);
+        }
+
+        return wintoys;
+    }
+
+
 
     public int AgeGetId(String word) {        
         int newage = 0;

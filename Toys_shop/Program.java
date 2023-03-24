@@ -12,8 +12,14 @@ public class Program {
         View view = new View(staffController);
 
         ReadFile ReadFile = new ReadFile();
-        List<String> list = ReadFile.readAllLines();
+        String path = "toys.txt";
+        List<String> list = ReadFile.readAllLines(path);
         db.toys = ReadFile.readList(list);
+
+        ReadFile ReadFileWin = new ReadFile();
+        String pathwin = "toys_won.txt";
+        List<String> winlist = ReadFile.readAllLines(pathwin);
+        db.winToys = ReadFileWin.readWinList(winlist);
 
         view.choices();
         

@@ -1,8 +1,5 @@
 package Toys_shop;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 
 public class Toy {
        
@@ -11,7 +8,7 @@ public class Toy {
     int age;
     int droprate;
     int quantity;
-    java.util.Date date;
+    
    
 
     public Toy(int id, String name, int age, int droprate, int quantity) {
@@ -28,17 +25,18 @@ public class Toy {
 
     }
 
-    public Toy(int id, String name, Date date) {
+    public Toy(int id, String name) {
         this.id = id;
         this.name = name;
-        this.date = date;
-
+      
     }
 
 
     public void setId (int id){
         this.id = id;
     }
+    
+ 
 
  
 }
